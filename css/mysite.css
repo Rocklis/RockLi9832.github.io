@@ -1,0 +1,26 @@
+div {
+	color: hotpink;
+
+}
+h3{
+	color: royalblue;
+	font-family: "楷体";
+}
+.day_2_text{
+	color: cornflowerblue;
+	width: 300px;
+	height: 180px;
+	border: 2px solid black;
+}
+#hello{
+	color: cyan;
+}
+.i,#love,#you{
+	color: aquamarine;
+}
+.div p{
+	color: turquoise;
+}
+.tian p span{
+	color: blue;
+}

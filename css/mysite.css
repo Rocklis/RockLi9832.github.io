@@ -1,3 +1,4 @@
+
 div {
 	color: hotpink;
 
@@ -23,4 +24,16 @@ h3{
 }
 .tian p span{
 	color: blue;
+}
+.day_url{
+	color: black;
+	font-family: "楷体";
+	text-decoration: none;
+}
+
+h1:hover{
+	color: turquoise;
+}
+.weight:hover{
+	color: #40E0D0;
 }

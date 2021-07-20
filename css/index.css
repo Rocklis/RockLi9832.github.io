@@ -24,3 +24,7 @@
 #map3_start {
     margin-top: -20px;
 }
+#buttonsTab .button:hover {
+    background: #f1ebe9 !important;
+    border-radius: 8px !important;
+}

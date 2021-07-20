@@ -1,0 +1,26 @@
+#index_home {
+
+    margin-top: 0;
+}
+.borderRadius15 {
+    border-radius: 15px !important;
+}
+#userHead {
+    box-shadow: 0 0 15px grey;
+    border: 2px solid white;
+}
+#nicknameArea {
+    text-align: center;
+    font-size: 25px;
+    font-family: 字魂67号-勾玉行书;
+    margin-top: 8px;
+}
+#saying {
+    text-align: left;
+    font-size: 17px;
+    font-family: 楷体;
+    margin-top:3px;
+}
+#map3_start {
+    margin-top: -20px;
+}

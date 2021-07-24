@@ -10,7 +10,9 @@
 
 </head>
 <body>
+
 <div class="ui very padded segment" id="index_home">
+
     <div class="ui grid">
         <div class="four wide column">
             <!--博主的信息简介-->
@@ -43,59 +45,91 @@
                     </div>
                 </div>
                 <div id="audioBox">
-                    <script type="text/javascript">
-                        window.onload = function(){
-                            var arr =["audio/P!NK - Just Like Fire.mp3","audio/徐梓淳 - 嫌晚.mp3"];              //把需要播放的歌曲从后往前排，这里已添加两首音乐，可继续添加多个音乐
-                            var myAudio = new Audio();
-                            myAudio.preload = true;
-                            myAudio.controls = true;
-                            myAudio.src = arr.pop();         //每次读数组最后一个元素
-                            myAudio.addEventListener('ended', playEndedHandler, false);
-                            myAudio.play();
-                            document.getElementById("audioBox").appendChild(myAudio);
-                            myAudio.loop = false;//禁止循环，否则无法触发ended事件
-                            function playEndedHandler(){
-                                myAudio.src = arr.pop();
-                                myAudio.play();
-                                console.log(arr.length);
-                                !arr.length && myAudio.removeEventListener('ended',playEndedHandler,false);//只有一个元素时解除绑定
-                            }
-                        }
-                    </script>
                 </div>
             </div>
             <!--文章分类列表-->
-            <div class="ui raised padded segment borderRadius15">
-                <h5 class="ui horizontal divider header">
-                    <i class="chart bar outline icon"></i>
-                    文章分类
-                </h5>
-                <div class="ui secondary vertical menu fluid">
-                    <a class="item">
-                        Java
-                        <div class="ui circular label">50</div>
-                    </a>
-                    <a class="item">
-                        Python
-                        <div class="ui circular label">80</div>
-                    </a>
-                    <a class="item">
-                        Windows
-                        <div class="ui circular label">20</div>
-                    </a>
-                    <a class="item">
-                        SQL Server
-                        <div class="ui circular label">10</div>
-                    </a>
-                    <a class="item">
-                        C语言
-                        <div class="ui circular label">10</div>
-                    </a>
-                    <a class="item">
-                        爬虫
-                        <div class="ui circular label">70</div>
-                    </a>
+            <div class="ui raised segment accordion borderRadius15">
+                <div class="ui basic segment article_list">
+                    <div class="title">
+                        <i class="dropdown icon"></i>
+                        python爬虫
+                    </div>
+                    <div class="content">
+                        <div class="ui secondary vertical menu itemMenu">
+                            <a class="item" data-tab="one">
+                                初始爬虫
+                            </a>
+                            <a class="item" data-tab="two">
+                                request牛刀小试
+                            </a>
+                            <a class="item" data-tab="three">
+                                re总结
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
+                <div class="ui basic segment article_list">
+                    <div class="title">
+                        <i class="dropdown icon"></i>
+                        python基础知识
+                    </div>
+                    <div class="content">
+                        <div class="ui secondary vertical menu itemMenu">
+                            <a class="item" data-tab="four">
+                                list常用方法
+                            </a>
+                            <a class="item" data-tab="five">
+                                dic常用方法
+                            </a>
+                            <a class="item" data-tab="six">
+                                切片方法总结
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ui basic segment article_list">
+                    <div class="title">
+                        <i class="dropdown icon"></i>
+                        python爬虫
+                    </div>
+                    <div class="content">
+                        <div class="ui secondary vertical menu itemMenu">
+                            <a class="item" data-tab="seven">
+                                初始爬虫
+                            </a>
+                            <a class="item" data-tab="eight">
+                                request牛刀小试
+                            </a>
+                            <a class="item" data-tab="nine">
+                                re总结
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ui basic segment  article_list">
+                    <div class="title">
+                        <i class="dropdown icon"></i>
+                        python基础知识
+                    </div>
+                    <div class="content">
+                        <div class="ui secondary vertical menu itemMenu">
+                            <a class="item" data-tab="ten">
+                                list常用方法
+                            </a>
+                            <a class="item" data-tab="eleven">
+                                dic常用方法
+                            </a>
+                            <a class="item" data-tab="twelve">
+                                切片方法总结
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!--联系博主-->
             <div class="ui raised padded segment borderRadius15">
@@ -104,11 +138,11 @@
                     联系我
                 </h5>
                 <div class="ui labels">
-                    <div class="ui blue label">
+                    <div class="ui blue label" id="qqLabel">
                         <i class="qq icon"></i>
                         315105654
                     </div>
-                    <div class="ui green label">
+                    <div class="ui green label" id="wechatLabel">
                         <i class="wechat icon"></i>
                         L856320
                     </div>
@@ -123,11 +157,44 @@
                 </div>
             </div>
         </div>
-        <div class="four wide column"></div>
-        <div class="four wide column"></div>
+        <div class="one wide column">
+            <div class="ui vertical icon menu sticky">
+                <a class="item">
+                    <i class="thumbs up outline icon"></i>
+                </a>
+                <a class="item">
+                    <i class="thumbs down outline icon"></i>
+                </a>
+                <a class="item">
+                    <i class="star icon"></i>
+                </a>
+            </div>
+        </div>
+        <div class="eleven wide column" id="right_context">
+            <!--主页点赞统计-->
+            <div class="ui active tab article_context" data-tab="one" id="article_001"></div>
+            <!--文章点赞统计-->
+            <div class="ui tab article_context" data-tab="two" id="article_002"></div>
+            <!--文章发布统计-->
+            <div class="ui tab article_context" data-tab="three" id="article_003"></div>
+            <!--文章梳理-->
+            <div class="ui tab article_context" data-tab="four" id="article_004"></div>
+            <!--垃圾箱-->
+            <div class="ui tab article_context" data-tab="five" id="article_005"></div>
+            <!--草稿箱-->
+            <div class="ui tab article_context" data-tab="six" id="article_006"></div>
+        </div>
     </div>
-</div>
-<script src="lib/jQuery/jquery-3.3.1.js"></script>
-<script src="lib/semantic/semantic.js"></script>
+    <!--预提示区-->
+    <div class="ui popup" id="qqPopup">
+        <img src="image/QQ.png" class="ui image">
+    </div>
+    <div class="ui popup" id="wechatPopup">
+        <img src="image/wechat.png" class="ui image">
+    </div>
+
+    <script src="lib/jQuery/jquery-3.3.1.js"></script>
+    <script src="lib/semantic/semantic.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

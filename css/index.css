@@ -1,6 +1,8 @@
-#index_home {
 
+#index_home {
     margin-top: 0;
+    background: url("../image/background_1.jpg") fixed;
+    background-size: 100% auto;
 }
 .borderRadius15 {
     border-radius: 15px !important;
@@ -28,3 +30,28 @@
     background: #f1ebe9 !important;
     border-radius: 8px !important;
 }
+.article_list {
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+}
+/*.my-background{*/
+/*    position: fixed;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    background-image: url("../image/background.jpg");*/
+/*    opacity: 0.3 ;*/
+/*}*/
+.ui.sticky {
+    /*过渡 ：所有的属性2秒的过渡*/
+    transition: all 2s;
+}
+/*粘性后自动添加的类*/
+.ui.sticky.fixed {
+    margin-top: 80px !important;
+}
+
+
+
+

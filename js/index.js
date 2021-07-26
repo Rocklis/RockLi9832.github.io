@@ -17,8 +17,11 @@ window.onload = function(){
     }
 }
 /*导入其他html文件到这个页面中*/
-$('#article_001').load("log_001.html");
-$('#article_002').load("log_002.html");
+$('#article_001').load("blog/log_001.html");
+$('#article_002').load("blog/log_002.html");
+$('#article_007').load("blog/sqlite3初使用.html");
+$('#article_008').load("blog/sqlite之更新数据(根据csv文件).html");
+$('#article_009').load("blog/从csv文件向数据库中插入数据.html");
 
 
 /*下拉菜单的初始化*/

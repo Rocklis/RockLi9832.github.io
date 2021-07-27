@@ -1,0 +1,546 @@
+<!DOCTYPE html><html><head>
+      <title>Mongo&#x6570;&#x636E;&#x5E93;&#x7684;&#x4F7F;&#x7528;&#x6559;&#x7A0B;(&#x5B8C;&#x5168;&#x7248;)</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\007\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.22\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h2>Mongo&#x6570;&#x636E;&#x5E93;&#x7684;&#x4F7F;&#x7528;&#x6559;&#x7A0B;(&#x5B8C;&#x5168;&#x7248;)</h2>
+          <hr>
+<p>MongoDB&#x662F;&#x7531;C++&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;&#x975E;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x5B58;&#x50A8;&#x7684;&#x5F00;&#x6E90;&#x6570;&#x636E;&#x5E93;&#x7CFB;&#x7EDF;&#xFF0C;&#x5176;&#x5185;&#x5BB9;&#x5B58;&#x50A8;&#x5F62;&#x5F0F;&#x7C7B;&#x4F3C;JSON&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x7684;&#x5B57;&#x6BB5;&#x503C;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x6587;&#x6863;&#x3001;&#x6570;&#x7EC4;&#x53CA;&#x6587;&#x6863;&#x6570;&#x7EC4;&#xFF0C;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#x3002;</p>
+<p><strong>&#x76EE;&#x5F55;</strong></p>
+<p><a href="#1" target="_self">&#x8FDE;&#x63A5;MongoDB</a><br>
+<a href="#2" target="_self">&#x6307;&#x5B9A;&#x6570;&#x636E;&#x5E93;&#x4E0E;&#x96C6;&#x5408;</a><br>
+<a href="#3" target="_self">&#x63D2;&#x5165;&#x6570;&#x636E;</a><br>
+<a href="#4" target="_self">&#x67E5;&#x8BE2;</a><br>
+<a href="#5" target="_self">&#x8BA1;&#x6570;</a><br>
+<a href="#6" target="_self">&#x6392;&#x5E8F;</a><br>
+<a href="#7" target="_self">&#x504F;&#x79FB;</a><br>
+<a href="#8" target="_self">&#x66F4;&#x65B0;</a><br>
+<a href="#9" target="_self">&#x5220;&#x9664;</a></p>
+<h3 id="1">&#x8FDE;&#x63A5;MongoDB</h3>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword">import</span> pymongo
+client <span class="token operator">=</span> pymongo<span class="token punctuation">.</span>MongoClient<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">&quot;localhost&quot;</span><span class="token punctuation">,</span>port<span class="token operator">=</span><span class="token number">27017</span><span class="token punctuation">)</span> <span class="token comment">#&#x9ED8;&#x8BA4;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x662F;27017&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x6C42;&#x8FDB;&#x884C;&#x66F4;&#x6539;</span>
+</pre><br>
+<h3 id="2">&#x6307;&#x5B9A;&#x6570;&#x636E;&#x5E93;&#x4E0E;&#x96C6;&#x5408;</h3>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python">db <span class="token operator">=</span> client<span class="token punctuation">.</span>test      <span class="token comment"># &#x6216;&#xFF1A; db = client[&apos;test&apos;] &#x8FD9;&#x91CC;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BE5;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5730;&#x8FDB;&#x884C;&#x65B0;&#x5EFA;</span>
+collection <span class="token operator">=</span> db<span class="token punctuation">.</span>first <span class="token comment"># &#x6216;&#xFF1A; db = client[&apos;first&apos;] &#x8FD9;&#x91CC;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BE5;&#x96C6;&#x5408;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5730;&#x8FDB;&#x884C;&#x65B0;&#x5EFA;</span>
+</pre><h3 id="3">&#x63D2;&#x5165;&#x6570;&#x636E;</h3>
+<ul>
+<li>insert_one(): &#x63D2;&#x5165;&#x4E00;&#x6761;&#x6570;&#x636E;</li>
+<li>insert_many(): &#x63D2;&#x5165;&#x591A;&#x6761;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># #&#x63D2;&#x5165;&#x6570;&#x636E;_&#x4E00;&#x6761;</span>
+student <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">&apos;id&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;001&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;&#x5C0F;&#x7EA2;&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;gender&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;male&apos;</span>
+<span class="token punctuation">}</span>
+result <span class="token operator">=</span> collection<span class="token punctuation">.</span>insert_one<span class="token punctuation">(</span>student<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>                <span class="token comment">#&#x8FD4;&#x56DE;&#x7684;&#x662F;InsertOneResult&#x5BF9;&#x8C61;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>inserted_id<span class="token punctuation">)</span>    <span class="token comment">#&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x5176;inserted_id&#x5C5E;&#x6027;&#x83B7;&#x53D6;_id&#xFF0C;&#x8FD9;&#x4E2A;_id&#x662F;mongo&#x81EA;&#x52A8;&#x8D4B;&#x7ED9;&#x7684;</span>
+</pre><pre class="language-text">&lt;pymongo.results.InsertOneResult object at 0x000002030178B380&gt;
+60fff91cbc6eb6620e54a6b7
+</pre>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#&#x63D2;&#x5165;&#x6570;&#x636E;_&#x591A;&#x6761;</span>
+student1 <span class="token operator">=</span><span class="token punctuation">{</span>
+    <span class="token string">&apos;id&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;002&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;&#x5C0F;&#x660E;&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;gender&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;man&apos;</span>
+<span class="token punctuation">}</span>
+student2 <span class="token operator">=</span><span class="token punctuation">{</span>
+    <span class="token string">&apos;id&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;003&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;&#x5C0F;&#x521A;&apos;</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token string">&apos;gender&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;man&apos;</span>
+<span class="token punctuation">}</span>
+result1 <span class="token operator">=</span> collection<span class="token punctuation">.</span>insert_many<span class="token punctuation">(</span><span class="token punctuation">[</span>student1<span class="token punctuation">,</span>student2<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result1<span class="token punctuation">.</span>inserted_ids<span class="token punctuation">)</span>
+</pre><pre class="language-text">&lt;pymongo.results.InsertManyResult object at 0x0000020302213880&gt;
+[ObjectId(&apos;60fff963bc6eb6620e54a6b8&apos;), ObjectId(&apos;60fff963bc6eb6620e54a6b9&apos;)]
+</pre>
+<h3 id="4">&#x67E5;&#x8BE2;</h3>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;find_one()&#x6216;find()&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;</p>
+<ul>
+<li><strong>find_one()</strong> :&#x8FD4;&#x56DE;&#x5355;&#x4E2A;&#x7ED3;&#x679C;</li>
+<li><strong>find()</strong> : &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x5668;&#x5BF9;&#x8C61;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x9650;&#x5236;&#x6761;&#x4EF6;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">result2 <span class="token operator">=</span> collection<span class="token punctuation">.</span>find_one<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;&#x5C0F;&#x7EA2;&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span>
+</pre><pre class="language-text">&lt;class &apos;dict&apos;&gt;
+{&apos;_id&apos;: ObjectId(&apos;60fff91cbc6eb6620e54a6b7&apos;), &apos;id&apos;: &apos;001&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x7EA2;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;male&apos;}
+</pre>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python">results <span class="token operator">=</span> collection<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span>  <span class="token comment"># &#x8FD4;&#x56DE;&#x503C;&#x662F;cursor&#x7C7B;&#x578B;&#xFF0C;&#x5B83;&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x904D;&#x5386;&#x5F97;&#x5230;&#x6240;&#x6709;&#x7ED3;&#x679C;</span>
+<span class="token keyword">for</span> result <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+</pre><pre class="language-text">&lt;pymongo.cursor.Cursor object at 0x000002030221E6A0&gt;
+{&apos;_id&apos;: ObjectId(&apos;60fff91cbc6eb6620e54a6b7&apos;), &apos;id&apos;: &apos;001&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x7EA2;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;male&apos;}
+{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b8&apos;), &apos;id&apos;: &apos;002&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x660E;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b9&apos;), &apos;id&apos;: &apos;003&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x521A;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+</pre>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># &#x6761;&#x4EF6;&#x67E5;&#x8BE2;</span>
+<span class="token comment"># &#x5982;&#x679C;&#x8981;&#x67E5;&#x8BE2;&#x5927;&#x4E8E;&#x5E74;&#x9F84;&#x503C;&#x5927;&#x4E8E;20&#x7684;</span>
+results <span class="token operator">=</span> collection<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&apos;$gt&apos;</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment"># &#x4E5F;&#x53EF;&#x4EE5;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;</span>
+results <span class="token operator">=</span> collection<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&apos;$regex&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;^&#x5C0F;.*&apos;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span>
+<span class="token keyword">for</span> result <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+</pre><pre class="language-text">&lt;pymongo.cursor.Cursor object at 0x000002030221E8B0&gt;
+{&apos;_id&apos;: ObjectId(&apos;60fff91cbc6eb6620e54a6b7&apos;), &apos;id&apos;: &apos;001&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x7EA2;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;male&apos;}
+{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b8&apos;), &apos;id&apos;: &apos;002&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x660E;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b9&apos;), &apos;id&apos;: &apos;003&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x521A;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+</pre>
+<p><em><strong>&#x8FD9;&#x91CC;&#x6211;&#x603B;&#x7ED3;&#x4E86;&#x4E00;&#x4E0B;&#x67E5;&#x8BE2;&#x5339;&#x914D;&#x7684;&#x6BD4;&#x8F83;&#x7B26;&#x53F7;&#x548C;&#x529F;&#x80FD;&#x7B26;&#x53F7;</strong></em></p>
+<br>
+<p>&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003; &#x2003;&#x2003;&#x2003;&#x2003;  <strong>&#x6BD4;&#x8F83;&#x7B26;&#x53F7;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x542B;&#x4E49;</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$lt</td>
+<td>&#x5C0F;&#x4E8E;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$lt&apos; :   20  }  }</td>
+</tr>
+<tr>
+<td>$gt</td>
+<td>&#x5927;&#x4E8E;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$gt&apos; :   20  }  }</td>
+</tr>
+<tr>
+<td>$lte</td>
+<td>&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$lte&apos; :   20  }  }</td>
+</tr>
+<tr>
+<td>$gte</td>
+<td>&#x5927;&#x4E8E;&#x7B49;&#x4E8E;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$gte&apos; :   20  }  }</td>
+</tr>
+<tr>
+<td>$ne</td>
+<td>&#x4E0D;&#x7B49;&#x4E8E;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$ne&apos; :   20  }  }</td>
+</tr>
+<tr>
+<td>$in</td>
+<td>&#x5728;&#x8303;&#x56F4;&#x5185;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$in&apos; :   [20,22]  }  }</td>
+</tr>
+<tr>
+<td>$nin</td>
+<td>&#x4E0D;&#x5728;&#x8303;&#x56F4;&#x5185;</td>
+<td style="text-align:center">{&apos;age&apos;:  { &apos;$nin&apos; :   [20,24]  }  }</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>&#x200B;                                                              &#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003; &#x2003;&#x2003;&#x2003;&#x2003;<strong>&#x529F;&#x80FD;&#x7B26;&#x53F7;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x542B;&#x4E49;</th>
+<th>&#x793A;&#x4F8B;</th>
+<th>&#x793A;&#x4F8B;&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$regex</td>
+<td>&#x5339;&#x914D;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</td>
+<td>{&apos;name&apos;:{&apos;$regex&apos;:&apos;^M.*&apos;}}</td>
+<td>name&#x4EE5;M&#x5F00;&#x5934;</td>
+</tr>
+<tr>
+<td>$exists</td>
+<td>&#x5C5E;&#x6027;&#x662F;&#x5426;&#x5B58;&#x5728;</td>
+<td>{&apos;name&apos;:{&apos;$exists&apos;:&apos;True&apos;}}</td>
+<td>name&#x5C5E;&#x6027;&#x5B58;&#x5728;</td>
+</tr>
+<tr>
+<td>$type</td>
+<td>&#x7C7B;&#x578B;&#x5224;&#x65AD;</td>
+<td>{&apos;age&apos;:{&apos;$type&apos;:&apos;int&apos;}}</td>
+<td>age&#x7684;&#x7C7B;&#x578B;&#x4E3A;int</td>
+</tr>
+<tr>
+<td>$mod</td>
+<td>&#x6570;&#x5B57;&#x6A21;&#x64CD;&#x4F5C;</td>
+<td>{&apos;age&apos;:{&apos;$mod&apos;:[5,0]}}</td>
+<td>&#x5E74;&#x9F84;&#x6A21;5&#x4F59;0</td>
+</tr>
+<tr>
+<td>$text</td>
+<td>&#x6587;&#x672C;&#x67E5;&#x8BE2;</td>
+<td>{&apos;<span style="color: #ee7f49; font-weight: 500;">ParseError: KaTeX parse error: Expected &apos;}&apos;, got &apos;EOF&apos; at end of input: text&apos;:{&apos;</span>search&apos;:&apos;Mike&apos;}}</td>
+<td>text&#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#x4E2D;&#x5305;&#x542B;Mike&#x5B57;&#x7B26;&#x4E32;</td>
+</tr>
+<tr>
+<td>$where</td>
+<td>&#x9AD8;&#x7EA7;&#x6761;&#x4EF6;&#x67E5;&#x8BE2;</td>
+<td>{&apos;$where&apos;:&apos;odj.fans_count == obj.follows_count&apos; }</td>
+<td>&#x81EA;&#x8EAB;&#x7C89;&#x4E1D;&#x6570;&#x7B49;&#x4E8E;&#x5173;&#x6CE8;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5">&#x8BA1;&#x6570;</h3>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># # &#x8BA1;&#x6570;</span>
+count <span class="token operator">=</span> collection<span class="token punctuation">.</span>count_documents<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;gender&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;man&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
+</pre><pre class="language-text">2
+</pre>
+<h3 id="6">&#x6392;&#x5E8F;</h3>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#&#x6392;&#x5E8F;</span>
+results <span class="token operator">=</span> collection<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token string">&apos;id&apos;</span><span class="token punctuation">,</span>pymongo<span class="token punctuation">.</span>DESCENDING<span class="token punctuation">)</span> <span class="token comment"># pymongo.ASCENDING&#x5347;&#x5E8F;</span>
+<span class="token keyword">for</span> result <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+</pre><pre class="language-text">{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b9&apos;), &apos;id&apos;: &apos;003&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x521A;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b8&apos;), &apos;id&apos;: &apos;002&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x660E;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+{&apos;_id&apos;: ObjectId(&apos;60fff91cbc6eb6620e54a6b7&apos;), &apos;id&apos;: &apos;001&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x7EA2;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;male&apos;}
+</pre>
+<h3 id="7">&#x504F;&#x79FB;</h3>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x60F3;&#x53EA;&#x53D6;&#x67D0;&#x51E0;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x5229;&#x7528;skip&#xFF08;&#xFF09;&#x65B9;&#x6CD5;&#x504F;&#x79FB;&#x51E0;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x6BD4;&#x5982;&#x504F;&#x79FB;2&#xFF0C;&#x5C31;&#x5FFD;&#x7565;&#x524D;&#x4E24;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5F97;&#x5230;&#x7B2C;&#x4E09;&#x4E2A;&#x53CA;&#x4EE5;&#x540E;&#x7684;&#x5143;&#x7D20;&#xFF1A;</p>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#&#x53D6;&#x6570;&#xFF08;&#x504F;&#x79FB;&#xFF0C;&#x9650;&#x5236;&#xFF09;</span>
+<span class="token comment"># skip() : &#x504F;&#x79FB;&#x4E2A;&#x6570;</span>
+<span class="token comment"># limit() : &#x6307;&#x5B9A;&#x8981;&#x53D6;&#x7684;&#x7ED3;&#x679C;&#x4E2A;&#x6570;</span>
+results <span class="token operator">=</span> collection<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>skip<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> result <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+</pre><pre class="language-text">{&apos;_id&apos;: ObjectId(&apos;60fff963bc6eb6620e54a6b8&apos;), &apos;id&apos;: &apos;002&apos;, &apos;name&apos;: &apos;&#x5C0F;&#x660E;&apos;, &apos;age&apos;: 20, &apos;gender&apos;: &apos;man&apos;}
+</pre>
+<h3 id="8">&#x66F4;&#x65B0;</h3>
+<ul>
+<li><strong>update_one()&#xFF1A;</strong> &#x66F4;&#x65B0;&#x4E00;&#x6761;&#x6570;&#x636E;</li>
+<li><strong>update_many()&#xFF1A;</strong> &#x66F4;&#x65B0;&#x591A;&#x6761;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#&#x66F4;&#x65B0;</span>
+<span class="token comment"># update_one()</span>
+condition <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;&#x5C0F;&#x7EA2;&apos;</span><span class="token punctuation">}</span>
+student <span class="token operator">=</span> collection<span class="token punctuation">.</span>find_one<span class="token punctuation">(</span>condition<span class="token punctuation">)</span>
+student<span class="token punctuation">[</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;&#x5C0F;&#x4E3D;&apos;</span>
+result <span class="token operator">=</span> collection<span class="token punctuation">.</span>update_one<span class="token punctuation">(</span>condition<span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">&apos;$set&apos;</span><span class="token punctuation">:</span>student<span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token comment"># &#x4F7F;&#x7528;$set&#x64CD;&#x4F5C;&#x7B26;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x66F4;&#x65B0;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>matched_count<span class="token punctuation">,</span>result<span class="token punctuation">.</span>modified_count<span class="token punctuation">)</span> <span class="token comment"># &#x83B7;&#x5F97;&#x5339;&#x914D;&#x7684;&#x4E2A;&#x6570;&#x548C;&#x5F71;&#x54CD;&#x7684;&#x4E2A;&#x6570;</span>
+</pre><pre class="language-text">&lt;pymongo.results.UpdateResult object at 0x0000020302231A80&gt;
+1 1
+</pre>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#update_many()</span>
+condition <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">}</span>
+result <span class="token operator">=</span> collection<span class="token punctuation">.</span>update_many<span class="token punctuation">(</span>condition<span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">&apos;$inc&apos;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">#$inc &#x52A0;&#x4E00;&#x64CD;&#x4F5C;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>matched_count<span class="token punctuation">,</span>result<span class="token punctuation">.</span>modified_count<span class="token punctuation">)</span> <span class="token comment"># &#x83B7;&#x5F97;&#x5339;&#x914D;&#x7684;&#x4E2A;&#x6570;&#x548C;&#x5F71;&#x54CD;&#x7684;&#x4E2A;&#x6570;</span>
+</pre><pre class="language-text">&lt;pymongo.results.UpdateResult object at 0x0000020302231100&gt;
+3 3
+</pre>
+<h3 id="9">&#x5220;&#x9664;</h3>
+<ul>
+<li><strong>delete_one:</strong> &#x5220;&#x9664;&#x4E00;&#x6761;&#x6570;&#x636E;</li>
+<li><strong>delete_many:</strong> &#x5220;&#x9664;&#x591A;&#x6761;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#&#x5220;&#x9664;&#x4E00;&#x6761;&#x6570;&#x636E;</span>
+result <span class="token operator">=</span> collection<span class="token punctuation">.</span>delete_one<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">:</span><span class="token string">&apos;&#x5C0F;&#x660E;&apos;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>deleted_count<span class="token punctuation">)</span>  <span class="token comment">#&#x83B7;&#x5F97;&#x5220;&#x9664;&#x7684;&#x4E2A;&#x6570;</span>
+</pre><pre class="language-text">&lt;pymongo.results.DeleteResult object at 0x000002030222C780&gt;
+1
+</pre>
+<br>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment">#&#x5220;&#x9664;&#x591A;&#x6761;&#x6570;&#x636E;</span>
+result <span class="token operator">=</span> collection<span class="token punctuation">.</span>delete_many<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&apos;age&apos;</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>deleted_count<span class="token punctuation">)</span>  <span class="token comment">#&#x83B7;&#x5F97;&#x5220;&#x9664;&#x7684;&#x4E2A;&#x6570;</span>
+</pre><pre class="language-text">&lt;pymongo.results.DeleteResult object at 0x00000203021FEF80&gt;
+2
+</pre>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

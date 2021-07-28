@@ -1,6 +1,6 @@
 
 window.onload = function(){
-    var arr =["Gaston庞加斯顿 - Ring Ring Ring (最热男版).mp3","陈奕迅 - 让我留在你身边.mp3","audio/P!NK - Just Like Fire.mp3","audio/徐梓淳 - 嫌晚.mp3"];              //把需要播放的歌曲从后往前排，这里已添加两首音乐，可继续添加多个音乐
+    var arr =["audio/Gaston庞加斯顿 - Ring Ring Ring (最热男版).mp3","audio/陈奕迅 - 让我留在你身边.mp3","audio/P!NK - Just Like Fire.mp3","audio/徐梓淳 - 嫌晚.mp3"];              //把需要播放的歌曲从后往前排，这里已添加两首音乐，可继续添加多个音乐
     var myAudio = new Audio();
     myAudio.preload = true;
     myAudio.controls = true;

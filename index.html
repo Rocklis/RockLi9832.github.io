@@ -1,211 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Rock li的博客</title>
-    <!--引入semantic样式文件-->
-    <link rel="stylesheet" href="lib/semantic/semantic.css">
-    <link rel="stylesheet" href="css/index.css">
-
+<meta charset="utf-8">
+<title>css超空间-jq22.com</title>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="css/enter.css">
 
 </head>
 <body>
 
-<div class="ui very padded segment" id="index_home">
+<div class="scene">
+  <div class="wrap">
+      <div class="wall wall-right"></div>
+      <div class="wall wall-left"></div>   
+      <div class="wall wall-top"></div>
+      <div class="wall wall-bottom"></div> 
+      <div class="wall wall-back"></div>    
+  </div>
+    <a href="home.html" style="text-decoration:none">Rock li</a>
 
-    <div class="ui grid">
-        <div class="four wide column">
-            <!--博主的信息简介-->
-            <div class="ui raised segment borderRadius15">
-                <img src="image/head.png" class="ui circular centered small image" id="userHead">
-                <p id="nicknameArea">
-                    Rock li
-                </p>
-                <p id="saying">我身负双翼 全副武装 战斗到胜利的曙光</p>
-                <div class="ui basic grey segment">
-                    <div class="ui three buttons" id="buttonsTab">
-                        <div class="ui basic button">
-                            <h4 class="ui header">
-                                756
-                                <div class="sub header">标签</div>
-                            </h4>
-                        </div>
-                        <div class="ui basic button">
-                            <h4 class="ui header">
-                                75
-                                <div class="sub header">浏览</div>
-                            </h4>
-                        </div>
-                        <div class="ui basic button">
-                            <h4 class="ui header">
-                                142
-                                <div class="sub header">文章</div>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div id="audioBox"></div>
-            </div>
-            <!--文章分类列表-->
-            <div class="ui raised segment accordion borderRadius15">
-                <div class="ui basic segment article_list">
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                       数据库
-                    </div>
-                    <div class="content">
-                        <div class="ui secondary vertical menu itemMenu">
-                            <a class="item" data-tab="one">
-                                Mongo数据库的使用教程(完全版)
-                            </a>
-                            <a class="item" data-tab="two">
-                                sqlite3初使用
-                            </a>
-                            <a class="item" data-tab="three">
-                                sqlite之更新数据（根据csv文件）
-                            </a>
-                            <a class="item" data-tab="four">
-                                从csv文件向数据库中插入数据
-                            </a>
+  <div class="wrap">
+      <div class="wall wall-right"></div>
+      <div class="wall wall-left"></div>   
+      <div class="wall wall-top"></div>
+      <div class="wall wall-bottom"></div>   
+      <div class="wall wall-back"></div>    
+  </div>
+</div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="ui basic segment article_list">
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        python基础知识
-                    </div>
-                    <div class="content">
-                        <div class="ui secondary vertical menu itemMenu">
-                            <a class="item" data-tab="five">
-                                list常用方法
-                            </a>
-                            <a class="item" data-tab="six">
-                                dic常用方法
-                            </a>
-                            <a class="item" data-tab="seven">
-                                切片方法总结
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui basic segment article_list">
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        python爬虫
-                    </div>
-                    <div class="content">
-                        <div class="ui secondary vertical menu itemMenu">
-                            <a class="item" data-tab="eight">
-                                初始爬虫
-                            </a>
-                            <a class="item" data-tab="nine">
-                                re总结
-                            </a>
-                            <a class="item" data-tab="ten">
-                                request牛刀小试
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui basic segment  article_list">
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        python爬虫
-                    </div>
-                    <div class="content">
-                        <div class="ui secondary vertical menu itemMenu">
-                            <a class="item" data-tab="eleven">
-                                初始爬虫
-                            </a>
-                            <a class="item" data-tab="twelve">
-                                request牛刀小试
-                            </a>
-                            <a class="item" data-tab="thirteen">
-                                re总结
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!--联系博主-->
-            <div class="ui raised padded segment borderRadius15">
-                <h5 class="ui horizontal divider header">
-                    <i class="address card outline icon"></i>
-                    联系我
-                </h5>
-                <div class="ui labels">
-                    <div class="ui blue label" id="qqLabel">
-                        <i class="qq icon"></i>
-                        315105654
-                    </div>
-                    <div class="ui green label" id="wechatLabel">
-                        <i class="wechat icon"></i>
-                        L856320
-                    </div>
-                    <div class="ui teal label">
-                        <i class="mobile icon"></i>
-                        17318830505
-                    </div>
-                    <div class="ui orange label">
-                        微博：
-                        17318830505
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="one wide column">
-            <div class="ui vertical icon menu sticky">
-                <a class="item">
-                    <i class="thumbs up outline icon"></i>
-                </a>
-                <a class="item">
-                    <i class="thumbs down outline icon"></i>
-                </a>
-                <a class="item">
-                    <i class="star icon"></i>
-                </a>
-            </div>
-        </div>
-        <div class="eleven wide column" id="right_context">
-            <!--主页点赞统计-->
-            <div class="ui active tab article_context" data-tab="one" id="article_001"></div>
-            <!--文章点赞统计-->
-            <div class="ui tab article_context" data-tab="two" id="article_002"></div>
-            <!--文章发布统计-->
-            <div class="ui tab article_context" data-tab="three" id="article_003"></div>
-            <!--文章梳理-->
-            <div class="ui tab article_context" data-tab="four" id="article_004"></div>
-            <!--垃圾箱-->
-            <div class="ui tab article_context" data-tab="five" id="article_005"></div>
-            <!--草稿箱-->
-            <div class="ui tab article_context" data-tab="six" id="article_006"></div>
-            <!--文章梳理-->
-            <div class="ui tab article_context" data-tab="seven" id="article_007"></div>
-            <!--垃圾箱-->
-            <div class="ui tab article_context" data-tab="eight" id="article_008"></div>
-            <!--草稿箱-->
-            <div class="ui tab article_context" data-tab="nine" id="article_009"></div>
-            <!--草稿箱-->
-            <div class="ui tab article_context" data-tab="nine" id="article_010"></div>
-        </div>
-    </div>
-    <!--预提示区-->
-    <div class="ui popup" id="qqPopup">
-        <img src="image/QQ.png" class="ui image">
-    </div>
-    <div class="ui popup" id="wechatPopup">
-        <img src="image/wechat.png" class="ui image">
-    </div>
-
-    <script src="lib/jQuery/jquery-3.3.1.js"></script>
-    <script src="lib/semantic/semantic.js"></script>
-    <script src="js/index.js"></script>
+<script>
+</script>
 
 </body>
 </html>

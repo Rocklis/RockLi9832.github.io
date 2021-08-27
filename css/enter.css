@@ -102,8 +102,8 @@ body:before{
         opacity: 0;
     }
 }
-body a{
+body #enter{
     color: #11e2e2;
-    font-size: 85px;
+    font-size: 50px;
 }
 

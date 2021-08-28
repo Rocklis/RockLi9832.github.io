@@ -236,7 +236,6 @@ init();
 
 $("#trybtn").click(function () {
     $('#context').val($('#contextother').val());
-    alert($('#context').val())  ;
     $replyform.form("validate form");
 })
 
@@ -262,7 +261,7 @@ $replyform.form({
         let formData =  $(this).form("get values");
         $.ajax({
             type: 'POST', // 请求方式
-            url: 'http://192.168.3.40:18081/sellrecord/tryone', // 请求地址
+            url: 'http://192.168.43.190:18081/sellrecord/tryone', // 请求地址
             data: formData,
             dataType: 'json',
             crossDomain: true,

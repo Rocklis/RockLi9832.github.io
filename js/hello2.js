@@ -234,4 +234,22 @@ init();
 
 
 
+$("#trybtn").click(function () {
+    $.ajax({
+        type: 'POST', // 请求方式
+        url: 'http://192.168.3.40:18081/sellrecord/tryone', // 请求地址
+        data: {
+            context: "hello world",
+        },
+        dataType: 'json',
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function (dataResponse) {
+
+        }
+    })
+
+})
 

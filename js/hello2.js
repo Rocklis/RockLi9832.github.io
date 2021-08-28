@@ -235,21 +235,68 @@ init();
 
 
 $("#trybtn").click(function () {
-    $.ajax({
-        type: 'POST', // 请求方式
-        url: 'http://192.168.3.40:18081/sellrecord/tryone', // 请求地址
-        data: {
-            context: "hello world",
-        },
-        dataType: 'json',
-        crossDomain: true,
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function (dataResponse) {
-
-        }
-    })
-
+    $('#context').val($('#contextother').val());
+    alert($('#context').val())  ;
+    $replyform.form("validate form");
 })
 
+let $replyform = $("#replyform");
+$replyform.form({
+    /*内联提示*/
+    inline: true,
+    /*验证的属性*/
+    fields: {
+        context: {
+            identifier: 'context',
+            rules: [
+                {
+                    type: 'empty',
+                    prompt: '请选择留言的内容'
+                }
+            ]
+        }
+
+
+    },
+    onSuccess:function( ){
+        let formData =  $(this).form("get values");
+        $.ajax({
+            type: 'POST', // 请求方式
+            url: 'http://192.168.3.40:18081/sellrecord/tryone', // 请求地址
+            data: formData,
+            dataType: 'json',
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (dataResponse) {
+                showBuyMessageModal(dataResponse.message);
+                if (dataResponse.success){
+                    setTimeout(function() {
+                        $reminder.modal("hide");
+                    },3000);
+
+                } else {
+                    setTimeout(function() {
+                        $reminder.modal("hide");
+                    },3000)
+                }
+
+            }
+        })
+    }
+})
+
+// 购买或抛售基金提示的模态框
+let $reminder = $("#reminder");
+/*购买或抛售基金提示的模态框*/
+function showBuyMessageModal(message) {
+    $reminder.modal({
+        closable: false, /*是否点击遮罩层关闭模态框*/
+        blurring: true, /*模糊遮罩层*/
+        transition: "swing right",
+        onShow: function(){
+            $('#reminder .content .segment').html(message)
+        }
+    }).modal('show');
+}

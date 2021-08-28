@@ -165,7 +165,15 @@
                         </div>
                     </div>
                 </div>
-                <button class="ui fluid blue button" id="trybtn">try</button>
+                <form class="ui reply form" id="replyform">
+                    <div class="field">
+                        <textarea id="contextother"></textarea>
+                        <input type="hidden" name="context" id="context">
+                    </div>
+                </form>
+                <div class="ui primary submit labeled icon fluid button" id="trybtn">
+                    <i class="icon edit"></i> 给作者留言
+                </div>
             </div>
             <div class="one wide column">
                 <div class="ui vertical icon menu sticky">
@@ -210,6 +218,13 @@
     </div>
     <div class="ui popup" id="wechatPopup">
         <img src="image/wechat.png" class="ui image">
+    </div>
+    <!--购买或抛售基金提示的模态框-->
+    <div class="ui basic mini modal" id="reminder">
+        <i class="close icon"></i>
+        <div class="content">
+            <div class="ui basic segment center aligned"></div>
+        </div>
     </div>
 </div>
 <div class="box" id="imgbox">
